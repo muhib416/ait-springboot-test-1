@@ -23,6 +23,7 @@ public class UserController {
         users.setHp(user.getHp());
         users.setEmail(user.getEmail());
 
+        System.out.println(user.getName());
         String listString = "";
 
         for (String s : user.getAlamat())
