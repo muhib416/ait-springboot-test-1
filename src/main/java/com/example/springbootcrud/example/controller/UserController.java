@@ -3,6 +3,9 @@ package com.example.springbootcrud.example.controller;
 import com.example.springbootcrud.example.entity.User;
 import com.example.springbootcrud.example.entity.UserDummy;
 import com.example.springbootcrud.example.service.UserService;
+
+import util.JSONUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +37,7 @@ public class UserController {
         users.setAlamat(listString);
         userService.saveUser(users);
 
-        return "";
+        return JSONUtil.createJSON(users);
     }
 
     @GetMapping("/user/list")
@@ -44,13 +47,13 @@ public class UserController {
         listUser = userService.getUser();
 
         if (listUser == null || listUser.size() ==  0) {
-            return "";
-        }
-        else {
+            return null;
+        } else {
             model.addAttribute("user", user);
             model.addAttribute("users", listUser);
-            return "";
+            JSONUtil.createJSON(model);
         }
+		return null;
     }
 
     @PostMapping("/user/find")
@@ -65,7 +68,7 @@ public class UserController {
             model.addAttribute("users",listUser);
         }
 
-        return "";
+        return JSONUtil.createJSON(model);
     }
 
 }
