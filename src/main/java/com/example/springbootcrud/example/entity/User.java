@@ -52,5 +52,5 @@ public class User {
 	}
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
-	}
+	} 
 }
